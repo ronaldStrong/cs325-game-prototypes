@@ -47,21 +47,22 @@ window.onload = function() {
         middleR=game.add.sprite(rightR.world.x-200,rightR.world.y,'middleRim');
         leftRim=game.add.sprite(middleR.world.x,middleR.world.y,'leftRim');
         // Turn on the arcade physics engine for this sprite.
-        game.physics.startSystem(Phaser.Physics.P2JS);
-        game.physics.p2.gravity.y = 500;
-        game.physics.p2.restitution = 0.8;
-        game.physics.p2.enable(surface, true);
+        game.physics.startSystem(Phaser.Physics.ARCADE);
+        game.physics.arcade.gravity.y = 500;
+        game.physics.arcade.enable(surface, true);
         // Make it bounce off of the world bounds.
-        game.physics.p2.enable(player, true);
+        game.physics.arcade.enable(player, true);
         player.body.setCircle(20);
         player.body.collideWorldBounds = true;
+        this.game.physics.arcade.collide(player, surface);
+        this.game.physics.arcade.collide(player,backBoard);
         // Add some text using a CSS style.
         // Center it in X, and position its top 15 pixels from the top of the world.
-        //var style = { font: "25px Verdana", fill: "#9999ff", align: "center" };
-        //var text = game.add.text( game.world.centerX, 15, "Score", style );
-        //var scoredisplay= game.add.text(game.world.centerX,30,score);
-        //text.anchor.setTo( 0.5, 0.0 );
-        //scoredisplay.anchor.setTo(0.5,0.0);
+        var style = { font: "25px Verdana", fill: "#9999ff", align: "center" };
+        var text = game.add.text( game.world.centerX, 15, "Score", style );
+        var scoredisplay= game.add.text(game.world.centerX,30,score);
+        text.anchor.setTo( 0.5, 0.0 );
+        scoredisplay.anchor.setTo(0.5,0.0);
         game.input.onDown.add(click, this);
         game.input.onUp.add(release, this);
         //game.input.addMoveCallback(game.input.pointer.move, this);
@@ -73,9 +74,7 @@ window.onload = function() {
         // in X or Y.
         // This function returns the rotation angle that makes it visually match its
         // new trajectory.
-        //this.game.physics.arcade.collide(this.player, this.surface);
-        //this.game.physics.arcade.collide(this.player,this.backBoard);
-        //game.physics.arcade.overlap(player, middleR, goal(), null, this);
+        game.physics.arcade.overlap(player, middleR, goal(), null, this);
         //game.physics.p2.hitTest(player.body, middleR.body);
         //if(player.world.x < )
 
@@ -95,21 +94,17 @@ window.onload = function() {
     
     function click(pointer) {
 
-        var bodies = game.physics.p2.hitTest(game.input.pointer, [ player.body ]);
-        
-        if (bodies.length)
-        {
-            //  Attach to the first body the mouse hit
-            mouseSpring = game.physics.p2.createSpring(pointer, bodies[0], 0, 30, 1);
-            line.setTo(player.x, player.y, pointer.x, pointer.y);
-            drawLine = true;
+        if(game.physics.arcade.overlap(pointer,player.body)){
+            player.world.x=pointer.worldX;
+            player.world.y=pointer.worldY;
+
         }
     
     }
     
     function release() {
     
-        game.physics.p2.removeSpring(mouseSpring);
+        //game.physics.arcade.removeSpring(mouseSpring);
     
 
     
