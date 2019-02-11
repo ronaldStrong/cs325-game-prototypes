@@ -37,8 +37,11 @@ window.onload = function() {
     var rightR;
     var pointer;
     var scoredisplay;
+<<<<<<< HEAD
     var lastPointerX;
     var lastPointery;
+=======
+>>>>>>> cbcced410bc134316cb16e8612cd47f77be5ed4a
     function create() {
         game.add.image(0,0,'sky');
         
@@ -66,11 +69,15 @@ window.onload = function() {
         game.physics.enable(player, Phaser.Physics.ARCADE);
         player.body.collideWorldBounds = true;
         player.body.bounce.setTo(.85, .75);
+<<<<<<< HEAD
         player.inputEnabled = true;
         player.input.start(0, true);
         player.events.onInputDown.add(set);
         player.events.onInputUp.add(launch);
 
+=======
+        
+>>>>>>> cbcced410bc134316cb16e8612cd47f77be5ed4a
         game.physics.enable(backBoard,Phaser.Physics.ARCADE);
         backBoard.body.immovable = true;
         backBoard.body.collideWorldBounds = true;
@@ -88,6 +95,7 @@ window.onload = function() {
         
 
     }
+<<<<<<< HEAD
     function set(ball, pointer) {
 
         ball.body.moves = false;
@@ -111,6 +119,9 @@ window.onload = function() {
     ball.body.velocity.setTo(Xvector, Yvector);
 
 }
+=======
+    
+>>>>>>> cbcced410bc134316cb16e8612cd47f77be5ed4a
     function update() {
         game.physics.arcade.collide(player,leftRim);
         game.physics.arcade.collide(player,rightR);
