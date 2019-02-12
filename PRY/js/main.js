@@ -13,14 +13,17 @@ window.onload = function() {
     var game = new Phaser.Game( 960, 644, Phaser.AUTO, 'game', { preload: preload, create: create, update: update } );
     
     function preload() {
-       
+        game.load.image( 'desktop1', 'assets/background.jpg' );
+        game.load.image( 'cow', 'assets/cow.png' );
     }
     
     
     function create() {
         game.stage.backgroundColor = '#4d4d4d';
         game.scale.fullScreenScaleMode = Phaser.ScaleManager.SHOW_ALL;
-        game.input.onDown.add(gofull, this); 
+        fskey = game.input.keyboard.addKey(Phaser.Keyboard.F10);
+        fskey.onDown.add(gofull, this);        
+        
     }
     function gofull() {
 
@@ -36,5 +39,6 @@ window.onload = function() {
     }
     function update() {
         
+
     }
 };
