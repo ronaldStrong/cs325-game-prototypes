@@ -17,7 +17,7 @@ window.onload = function() {
         game.load.image( 'cow', 'assets/cow.png' );
     }
     
-    
+    var fskey;
     function create() {
         game.stage.backgroundColor = '#4d4d4d';
         game.scale.fullScreenScaleMode = Phaser.ScaleManager.SHOW_ALL;
