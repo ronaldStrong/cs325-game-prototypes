@@ -21,12 +21,10 @@ window.onload = function() {
     var desktop;
     var cow;
     function create() {
-        desktop=game.add.sprite(0,0,'desktop1');
-        desktop.anchor.setTo(.5,.5);
-
+        desktop=game.add.sprite(0,0,'desktop1');''
+        desktop.anchor.setTo(.5,.5);''
         cow=game.add.sptite(700,350,'cow');
-        cow.alignIn(desktop, Phaser.BOTTOM_RIGHT);        
-        
+        cow.alignIn(desktop, Phaser.BOTTOM_RIGHT);            
         game.scale.fullScreenScaleMode = Phaser.ScaleManager.SHOW_ALL;
         fskey = game.input.keyboard.addKey(Phaser.Keyboard.F10);
         fskey.onDown.add(gofull, this);        
