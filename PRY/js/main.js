@@ -18,9 +18,13 @@ window.onload = function() {
     }
     
     var fskey;
+    var desktop;
+    var cow;
     function create() {
         desktop=game.add.sprite(0,0,'desktop1');
         desktop.anchor.setTo(.5,.5);
+        cow=game.add.sptite(800,350,'cow');
+        
         game.stage.backgroundColor = '#4d4d4d';
         game.scale.fullScreenScaleMode = Phaser.ScaleManager.SHOW_ALL;
         fskey = game.input.keyboard.addKey(Phaser.Keyboard.F10);
