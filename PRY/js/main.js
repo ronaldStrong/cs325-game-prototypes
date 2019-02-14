@@ -58,6 +58,7 @@ window.onload = function() {
         var sprite=game.make.sprite(game,gameWorldMinX,gameWorldMinY,image);
         sprite.inputEnabled = true;
         sprite.input.enableDrag();
+        sprite.events.onInputDown.add(function(s){console.log('clicked',s.name,s.renderOrderID)});
         var MinX=gameWorldMinX;
         var MaxX=gameworldMaxX;
         var MinY=gameWorldMinY;
