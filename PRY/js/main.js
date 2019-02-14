@@ -47,7 +47,7 @@ window.onload = function() {
                 }
             }
         }
-        getSprite(){
+        static getSprite(){
             return this.sprite;
         }
     }
@@ -126,7 +126,7 @@ window.onload = function() {
     var moos=0;
     function create() {
         deskt= new desktop(game,'desktop1',0,0, game.world.width, game.world.height);
-        deskt.getSprite().anchor.setTo(.5,.5);
+        deskt.getSprite.anchor.setTo(.5,.5);
         cow=game.add.sprite(700,350,'cow');
         cow.alignIn(deskt.sprite, Phaser.BOTTOM_RIGHT, 40,40);
         cow.inputEnabled=true;
