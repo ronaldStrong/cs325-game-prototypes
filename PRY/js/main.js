@@ -9,38 +9,37 @@ window.onload = function() {
     // You will need to change the paths you pass to "game.load.image()" or any other
     // loading functions to reflect where you are putting the assets.
     // All loading functions will typically all be found inside "preload()".
-    desktop = function (game, image, gameWorldMinX, gameWorldMinY, gameworldMaxX, gameWorldMaxY) {
-
+    class desktop{
+        constructor(game, image, gameWorldMinX, gameWorldMinY, gameworldMaxX, gameWorldMaxY){
         //  We call the Phaser.Sprite passing in the game reference
-        //  We're giving it a random X/Y position here, just for the sake of this demo - you could also pass the x/y in the constructor
-        Phaser.Sprite.call(this, game, gameWorldx, gameWorldy, image);
+        var sprite=game.make.sprite(game, gameWorldx, gameWorldy, image)
         var border = game.add.graphics(gameWorldx,gameWorldy);
         var MinX=gameWorldMinX;
         var MaxX=gameworldMaxX;
         var MinY=gameWorldMinY;
         var MaxY=gameWorldMaxY;
         var buttonArray=[]
-        this.anchor.setTo(0.5, 0.5);
-        
-        game.add.existing(this);
+        var game= game;
+        sprite.anchor.setTo(0.5, 0.5);
+        game.add.existing(sprite);
         var icons= [];
         var iconsIndex=0;
         var apps =[];
-        var appsIndex=0;
-        function startApp(app) {
+        var appsIndex=0;}
+        startApp(app) {
             apps[appsIndex]=app;
             buttonArray[appsIndex]=game.make.sprite(0, 0,);
-            buttonArray[appsIndex].alignIn(this,Phaser.BOTTOM_LEFT);
+            buttonArray[appsIndex].alignIn(sprite,Phaser.BOTTOM_LEFT);
             if(appsIndex!==0){
                 buttonArray[appsIndex].alignTo(--buttonArray[appsIndex], Phaser.RIGHT_CENTER, 5);
             }
             barButton.inputEnabled = true;
             barButton.input.priorityID = 1;
             barButton.input.useHandCursor = true;
-            barButton.events.onInputDown.add(app.awake(), this);
+            barButton.events.onInputDown.add(app.awake(), game);
             appsIndex++;
         }
-        function endApp(app){
+        endApp(app){
             let found = false;
             for( let a of apps ) {
                 if((a===app)&&(found===false)){
@@ -50,36 +49,27 @@ window.onload = function() {
             }
         }
     };
-    desktop.prototype = Object.create(Phaser.Sprite.prototype);
-    desktop.prototype.constructor = desktop;
-    
-    desktop.prototype.update = function() {
-    
-        //  Automatically called by World.update
-        
-    
-    };
-    app = function (game, image, gameWorldMinX, gameWorldMinY, gameworldMaxX, gameWorldMaxY, desktop) {
-
+    class app{
+        constructor(game, image, gameWorldMinX, gameWorldMinY, gameworldMaxX, gameWorldMaxY, desktop){
         //  We call the Phaser.Sprite passing in the game reference
         //  We're giving it a random X/Y position here, just for the sake of this demo - you could also pass the x/y in the constructor
-        Phaser.Sprite.call(this, game, gameWorldMinX, gameWorldMiny, image, desktop);
+        var sprite=game.make.sprite(game,gameWorldMinX,gameWorldMinY,image);
         var border = game.add.graphics(gameWorldx,gameWorldy);
-        this.inputEnabled = true;
-        this.input.enableDrag();
+        sprite.inputEnabled = true;
+        sprite.input.enableDrag();
         var MinX=gameWorldMinX;
         var MaxX=gameworldMaxX;
         var MinY=gameWorldMinY;
         var MaxY=gameWorldMaxY;
         var desktop=desktop;
-
+        var game= game;
         var closeButton = game.make.sprite(0, 0, 'close');
-        closeButton.alignIn(this,Phaser.TOP_RIGHT);
+        closeButton.alignIn(sprite,Phaser.TOP_RIGHT);
         closeButton.inputEnabled = true;
         closeButton.input.priorityID = 1;
         closeButton.input.useHandCursor = true;
         closeButton.events.onInputDown.add(kill(), this);
-        this.addChild(closeButton)
+        sprite.addChild(closeButton)
 
         var maxButton = game.make.sprite(0, 0, 'max').alignTo(closeButton, Phaser.LEFT_CENTER, 8);
         maxButton.inputEnabled = true;
@@ -93,46 +83,38 @@ window.onload = function() {
         minButton.input.useHandCursor = true;
         minButton.events.onInputDown.add(min, this);
 
-        this.anchor.setTo(0, 0);
-        function kill(){
+        sprite.anchor.setTo(0, 0);}
+        kill(){
             maxButton.destroy();
             minButton.destroy();
             closeButton.destroy();
-            desktop.endApp(this);
+            desktop.endApp(sprite);
         }
-        function max(s){
+        max(s){
             console.log('clicked',s.name,s.renderOrderID);
-            this.alpha=1;
-            this.scale.setTo((desktop.MaxX-desktop.MinX)/(this.MaxX-this.MinX),(desktop.MaxY-desktop.MinY)/(this.MaxY-this.MinY));
+            sprite.alpha=1;
+            sprite.scale.setTo((desktop.MaxX-desktop.MinX)/(this.MaxX-this.MinX),(desktop.MaxY-desktop.MinY)/(this.MaxY-this.MinY));
         }
-        function min(){
-            this.alpha=0;
+        min(){
+            sprite.alpha=0;
         }
-        function awake(){
-            this.alpha=1;
+        awake(){
+            sprite.alpha=1;
             console.log('clicked',s.name,s.renderOrderID);
         }
-        function add(thing, arragement)
+        add(thing, arragement)
         {
-            this.addChild(thing);
-            thing.alignIn(this,arragement);
+            sprite.addChild(thing);
+            thing.alignIn(sprite,arragement);
         }
-        game.add.existing(this);
-    };
-    app.prototype = Object.create(Phaser.Sprite.prototype);
-    app.prototype.constructor = app;
-    
-    app.prototype.update = function() {
-    
-        //  Automatically called by World.update
         
-    
-    };
+    }
     var game = new Phaser.Game( 960, 644, Phaser.AUTO, 'game', { preload: preload, create: create, update: update } );
     
     function preload() {
         game.load.image( 'desktop1', 'assets/background.jpg' );
         game.load.image( 'cow', 'assets/cow.png' );
+
     }
     
     var fskey;
