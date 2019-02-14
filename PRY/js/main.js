@@ -48,6 +48,9 @@ window.onload = function() {
                 }
             }
         }
+        get sprite(){
+            return sprite;
+        }
     };
     class app{
         constructor(game, image, gameWorldMinX, gameWorldMinY, gameworldMaxX, gameWorldMaxY, desktop){
@@ -118,14 +121,14 @@ window.onload = function() {
     }
     
     var fskey;
-    var desktop;
+    var deskt;
     var cow;
     var moos=0;
     function create() {
-        desktop= new desktop(game,'desktop1',0,0, game.world.width, game.world.height);
-        desktop.anchor.setTo(.5,.5);''
+        deskt= new desktop(game,'desktop1',0,0, game.world.width, game.world.height);
+        deskt.sprite.anchor.setTo(.5,.5);
         cow=game.add.sptite(700,350,'cow');
-        cow.alignIn(desktop, Phaser.BOTTOM_RIGHT, 40,40);
+        cow.alignIn(deskt.sprite, Phaser.BOTTOM_RIGHT, 40,40);
         cow.inputEnabled=true;
         cow.input.onDown(cowPress);            
         game.scale.fullScreenScaleMode = Phaser.ScaleManager.SHOW_ALL;
