@@ -48,9 +48,9 @@ window.onload = function() {
             }
         }
         get sprite(){
-            return sprite;
+            return this.sprite;
         }
-    };
+    }
     class app{
         constructor(game, image, gameWorldMinX, gameWorldMinY, gameworldMaxX, gameWorldMaxY, desktop){
         //  We call the Phaser.Sprite passing in the game reference
