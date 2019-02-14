@@ -27,7 +27,7 @@ window.onload = function() {
         var appsIndex=0;}
         startApp(app) {
             apps[appsIndex]=app;
-            buttonArray[appsIndex]=game.make.sprite(0, 0,);
+            buttonArray[appsIndex]=game.make.sprite(0, 0,new Phaser.Rectangle(0, 550, 800, 50));
             buttonArray[appsIndex].alignIn(sprite,Phaser.BOTTOM_LEFT);
             if(appsIndex!==0){
                 buttonArray[appsIndex].alignTo(--buttonArray[appsIndex], Phaser.RIGHT_CENTER, 5);
@@ -47,7 +47,7 @@ window.onload = function() {
                 }
             }
         }
-        get sprite(){
+        getSprite(){
             return this.sprite;
         }
     }
@@ -126,8 +126,8 @@ window.onload = function() {
     var moos=0;
     function create() {
         deskt= new desktop(game,'desktop1',0,0, game.world.width, game.world.height);
-        deskt.sprite.anchor.setTo(.5,.5);
-        cow=game.add.sptite(700,350,'cow');
+        deskt.getSprite().anchor.setTo(.5,.5);
+        cow=game.add.sprite(700,350,'cow');
         cow.alignIn(deskt.sprite, Phaser.BOTTOM_RIGHT, 40,40);
         cow.inputEnabled=true;
         cow.input.onDown(cowPress);            
