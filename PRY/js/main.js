@@ -153,9 +153,16 @@ window.onload = function() {
     }
     function cowPress(){
         moos++;
-        if (moos<3){
+        if (mooos===1){
 
         }
+        else if (moos===2){
+
+        }
+        else if (moos===3){
+            pryStart();
+            
+        } 
     }
     function update() {
         
