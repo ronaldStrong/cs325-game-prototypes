@@ -57,7 +57,6 @@ window.onload = function() {
         //  We call the Phaser.Sprite passing in the game reference
         //  We're giving it a random X/Y position here, just for the sake of this demo - you could also pass the x/y in the constructor
         var sprite=game.make.sprite(game,gameWorldMinX,gameWorldMinY,image);
-        var border = game.add.graphics(gameWorldx,gameWorldy);
         sprite.inputEnabled = true;
         sprite.input.enableDrag();
         var MinX=gameWorldMinX;
