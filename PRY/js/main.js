@@ -116,6 +116,7 @@ window.onload = function() {
     function preload() {
         game.load.image( 'desktop1', 'assets/background.jpg' );
         game.load.image( 'cow', 'assets/cow.png' );
+        game.load.image('pry', 'assets/4x/Pry@4x.png')
 
     }
     
@@ -148,7 +149,7 @@ window.onload = function() {
     
     }
     function pryStart(){
-
+        pry=game.add.sprite(game.world.centerX,game.world.centerY,'pry')
     }
     function cowPress(){
         moos++;
