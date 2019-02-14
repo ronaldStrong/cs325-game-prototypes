@@ -58,7 +58,7 @@ window.onload = function() {
         //  Automatically called by World.update
         
     
-    };
+    }
     app = function (game, image, gameWorldMinX, gameWorldMinY, gameworldMaxX, gameWorldMaxY, desktop) {
 
         //  We call the Phaser.Sprite passing in the game reference
@@ -127,7 +127,7 @@ window.onload = function() {
         //  Automatically called by World.update
         
     
-    };
+    }
     var game = new Phaser.Game( 960, 644, Phaser.AUTO, 'game', { preload: preload, create: create, update: update } );
     
     function preload() {
@@ -138,6 +138,7 @@ window.onload = function() {
     var fskey;
     var desktop;
     var cow;
+    var moos=0;
     function create() {
         desktop= new desktop(game,'desktop1',0,0, game.world.width, game.world.height);
         desktop.anchor.setTo(.5,.5);''
@@ -148,7 +149,7 @@ window.onload = function() {
         game.scale.fullScreenScaleMode = Phaser.ScaleManager.SHOW_ALL;
         fskey = game.input.keyboard.addKey(Phaser.Keyboard.F11);
         fskey.onDown.add(gofull, this);        
-        
+        fx = game.add.audio('sfx');
     }
     function gofull() {
 
@@ -162,8 +163,14 @@ window.onload = function() {
         }
     
     }
-    function cowPress(){
+    function pryStart(){
 
+    }
+    function cowPress(){
+        moos++;
+        if (moos<3){
+
+        }
     }
     function update() {
         
