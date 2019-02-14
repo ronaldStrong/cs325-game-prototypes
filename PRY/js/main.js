@@ -12,8 +12,7 @@ window.onload = function() {
     class desktop{
         constructor(game, image, gameWorldMinX, gameWorldMinY, gameworldMaxX, gameWorldMaxY){
         //  We call the Phaser.Sprite passing in the game reference
-        var sprite=game.make.sprite(game, gameWorldx, gameWorldy, image)
-        var border = game.add.graphics(gameWorldx,gameWorldy);
+        var sprite=game.make.sprite(game, gameWorldMinY, gameWorldMinY, image)
         var MinX=gameWorldMinX;
         var MaxX=gameworldMaxX;
         var MinY=gameWorldMinY;
