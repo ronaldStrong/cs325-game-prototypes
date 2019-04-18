@@ -220,11 +220,11 @@ GameStates.makeGame = function( game, shared ) {
         }})      
     }
     function setKeys(){
-        leftkey =   Phaser.Keyboard.LEFT;
-        rightkey =  Phaser.Keyboard.RIGHT;
-        upkey   =   Phaser.Keyboard.UP;
-        downkey =   Phaser.Keyboard.DOWN;
-        enterkey =  Phaser.Keyboard.ENTER;
+        leftkey =   game.input.keyboard.addKey(Phaser.Keyboard.LEFT);
+        rightkey =  game.input.keyboard.addKey(gamePhaser.Keyboard.RIGHT);
+        upkey   =   game.input.keyboard.addKey(Phaser.Keyboard.UP);
+        downkey =   game.input.keyboard.addKey(Phaser.Keyboard.DOWN);
+        enterkey =  game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
     }
 
     function onDown(button, value) {
