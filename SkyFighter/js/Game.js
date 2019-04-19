@@ -221,7 +221,7 @@ GameStates.makeGame = function( game, shared ) {
     }
     function setKeys(){
         leftkey =   game.input.keyboard.addKey(Phaser.Keyboard.LEFT);
-        rightkey =  game.input.keyboard.addKey(gamePhaser.Keyboard.RIGHT);
+        rightkey =  game.input.keyboard.addKey(Phaser.Keyboard.RIGHT);
         upkey   =   game.input.keyboard.addKey(Phaser.Keyboard.UP);
         downkey =   game.input.keyboard.addKey(Phaser.Keyboard.DOWN);
         enterkey =  game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
